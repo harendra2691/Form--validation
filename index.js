@@ -1,10 +1,10 @@
-const validation = () => {
+function validation() {
   const name = document.getElementById("name").value;
   const email = document.getElementById("email").value;
   const phone = document.getElementById("phone").value;
   const password = document.getElementById("password").value;
   const confirm_password = document.getElementById("confirm-password").value;
-
+  var pattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
   document.getElementById("name-error").innerHTML = "";
   document.getElementById("email-error").innerHTML = "";
   document.getElementById("phone-error").innerHTML = "";
@@ -27,6 +27,10 @@ const validation = () => {
 
   if (email == "") {
     document.getElementById("email-error").innerHTML = "Email is required";
+    return false;
+  }
+  if (!pattern.test(email)) {
+    document.getElementById("email-error").innerHTML = "Incorrect Email";
     return false;
   }
 
@@ -65,4 +69,4 @@ const validation = () => {
       "password not matching";
     return false;
   }
-};
+}
